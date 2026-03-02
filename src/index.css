@@ -82,6 +82,43 @@
   /* Layout */
   --container-max: 1200px;
   --navbar-height: 72px;
+  --navbar-bg: rgba(10, 14, 26, 0.8);
+}
+
+/* --- Light theme (overrides when [data-theme="light"]) --- */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-elevated: #f1f5f9;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #e2e8f0;
+  --color-surface: #e2e8f0;
+
+  --color-primary: #6366f1;
+  --color-primary-light: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-primary-glow: rgba(99, 102, 241, 0.2);
+
+  --color-accent: #06b6d4;
+  --color-accent-light: #0891b2;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #f1f5f9;
+
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-hover: rgba(15, 23, 42, 0.25);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 40px var(--color-primary-glow);
+
+  --navbar-bg: rgba(248, 250, 252, 0.9);
 }
 
 /* --- Reset & Base --- */
@@ -256,7 +293,7 @@ button {
   right: 0;
   height: var(--navbar-height);
   z-index: 1000;
-  background: rgba(10, 14, 26, 0.8);
+  background: var(--navbar-bg);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -284,7 +321,7 @@ button {
 .navbar__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
 .navbar__list {
@@ -318,6 +355,27 @@ button {
 
 .navbar__link:hover::after {
   width: 100%;
+}
+
+.navbar__theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.navbar__theme-toggle:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.navbar__theme-icon {
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .navbar__toggle {
